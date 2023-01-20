@@ -7,13 +7,11 @@ export interface TypingProps {
 export const Typing: React.FC<TypingProps> = ({ texts }) => {
   return (
     <ul>
-      {texts}
-      {/* <li>
-        <span>Youtuber</span>
-      </li>
-      <li>
-        <span>Designer</span>
-      </li> */}
+      {texts.map((text) => (
+        <li key={text}>
+          <span>{text}</span>
+        </li>
+      ))}
     </ul>
   );
 };
