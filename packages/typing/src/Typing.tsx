@@ -1,57 +1,37 @@
 import React from "react";
 
+import { styled } from "@mui/material";
 import Typography from "@mui/material/Typography";
 
-import { Span } from "./Typing.styles";
+import { useTyping } from "./use-typing";
+import { TypingProps, TypingSpanProps } from "./types";
 
-export interface TypingProps {
-  texts: string[];
-  speed?: number;
-  infinite?: boolean;
-}
+const TypingSpan = styled((props: TypingSpanProps) => (
+  <Typography component="span" {...props} />
+))(({ theme, color }) => ({
+  color: theme.palette[color].main,
+  "&::after": {
+    content: "''",
+    position: "absolute",
+    height: "100%",
+    width: "100%",
+    borderLeft: "2px solid currentColor",
+    color: theme.palette[color].main,
+  },
+}));
 
-const Typing: React.FC<TypingProps> = ({
-  texts,
-  speed = 1000,
-  infinite = false,
-}) => {
-  const [index, setIndex] = React.useState(0);
-  const [wordIndex, setWordIndex] = React.useState(1);
+const TypingRoot = styled(Typography)({
+  display: "inline-flex",
+  position: "relative",
+});
 
-  const maxIndex = texts.length - 1;
-
-  const text = texts[index];
-
-  const displayText = texts[index].slice(0, wordIndex);
-
-  React.useEffect(() => {
-    setTimeout(() => {
-      const maxWordIndex = text.length;
-
-      if (wordIndex < maxWordIndex) {
-        setWordIndex((old) => old + 1);
-
-        return;
-      }
-
-      if (index < maxIndex) {
-        setIndex((old) => old + 1);
-
-        setWordIndex(1);
-        return;
-      }
-
-      if (infinite) {
-        setWordIndex(1);
-        setIndex(0);
-      }
-    }, speed);
-  }, [index, wordIndex, text]);
+const Typing: React.FC<TypingProps> = (props) => {
+  const { text, color } = useTyping(props);
 
   return (
-    <Typography sx={{ display: "inline-flex", position: "relative" }}>
-      <Span>{displayText}</Span>
-    </Typography>
+    <TypingRoot>
+      <TypingSpan color={color}>{text}</TypingSpan>
+    </TypingRoot>
   );
 };
 
