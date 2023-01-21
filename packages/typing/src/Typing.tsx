@@ -7,9 +7,14 @@ import { Span } from "./Typing.styles";
 export interface TypingProps {
   texts: string[];
   speed?: number;
+  infinite?: boolean;
 }
 
-const Typing: React.FC<TypingProps> = ({ texts, speed = 1000 }) => {
+const Typing: React.FC<TypingProps> = ({
+  texts,
+  speed = 1000,
+  infinite = false,
+}) => {
   const [index, setIndex] = React.useState(0);
   const [wordIndex, setWordIndex] = React.useState(1);
 
@@ -36,8 +41,10 @@ const Typing: React.FC<TypingProps> = ({ texts, speed = 1000 }) => {
         return;
       }
 
-      // setWordIndex(1);
-      // setIndex(0);
+      if (infinite) {
+        setWordIndex(1);
+        setIndex(0);
+      }
     }, speed);
   }, [index, wordIndex, text]);
 

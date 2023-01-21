@@ -86,11 +86,8 @@ test("if it types texts on loop when infinite props is passed", function () { re
                 });
             }
         }
-        act(function () {
-            jest.advanceTimersByTime(SPEED);
-        });
         lastText = texts[texts.length - 1];
-        spanElement = screen.getByText(lastText);
+        spanElement = screen.queryByText(lastText);
         expect(spanElement).not.toBeInTheDocument();
         return [2 /*return*/];
     });

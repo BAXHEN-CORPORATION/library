@@ -2,9 +2,9 @@ import React from "react";
 import Typography from "@mui/material/Typography";
 import { Span } from "./Typing.styles";
 var Typing = function (_a) {
-    var texts = _a.texts, _b = _a.speed, speed = _b === void 0 ? 1000 : _b;
-    var _c = React.useState(0), index = _c[0], setIndex = _c[1];
-    var _d = React.useState(1), wordIndex = _d[0], setWordIndex = _d[1];
+    var texts = _a.texts, _b = _a.speed, speed = _b === void 0 ? 1000 : _b, _c = _a.infinite, infinite = _c === void 0 ? false : _c;
+    var _d = React.useState(0), index = _d[0], setIndex = _d[1];
+    var _e = React.useState(1), wordIndex = _e[0], setWordIndex = _e[1];
     var maxIndex = texts.length - 1;
     var text = texts[index];
     var displayText = texts[index].slice(0, wordIndex);
@@ -20,8 +20,10 @@ var Typing = function (_a) {
                 setWordIndex(1);
                 return;
             }
-            // setWordIndex(1);
-            // setIndex(0);
+            if (infinite) {
+                setWordIndex(1);
+                setIndex(0);
+            }
         }, speed);
     }, [index, wordIndex, text]);
     return (React.createElement(Typography, { sx: { display: "inline-flex", position: "relative" } },
