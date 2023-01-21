@@ -36,8 +36,8 @@ const Typing: React.FC<TypingProps> = ({ texts, speed = 1000 }) => {
         return;
       }
 
-      setWordIndex(1);
-      setIndex(0);
+      // setWordIndex(1);
+      // setIndex(0);
     }, speed);
   }, [index, wordIndex, text]);
 

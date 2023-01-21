@@ -20,8 +20,8 @@ var Typing = function (_a) {
                 setWordIndex(1);
                 return;
             }
-            setWordIndex(1);
-            setIndex(0);
+            // setWordIndex(1);
+            // setIndex(0);
         }, speed);
     }, [index, wordIndex, text]);
     return (React.createElement(Typography, { sx: { display: "inline-flex", position: "relative" } },

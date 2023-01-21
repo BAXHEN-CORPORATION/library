@@ -56,15 +56,21 @@ test("if it render the letters of the texts in order according each speed time",
         return [2 /*return*/];
     });
 }); });
-test("if it types each only once by default and display the last one in the end", function () {
-    jest.useFakeTimers();
-    render(React.createElement(Typing, { texts: texts, speed: SPEED }));
-    var timeToFinishDisplay = texts.reduce(function (acc, text) {
-        return acc + text.length;
-    }, 1);
-    act(function () {
-        jest.advanceTimersByTime(SPEED * timeToFinishDisplay);
+test("if it types each only once by default and display the last one in the end", function () { return __awaiter(void 0, void 0, void 0, function () {
+    var index, wordIndex, lastText, spanElement;
+    return __generator(this, function (_a) {
+        jest.useFakeTimers();
+        render(React.createElement(Typing, { texts: texts, speed: SPEED }));
+        for (index = 0; index < texts.length; index++) {
+            for (wordIndex = 1; wordIndex <= texts[index].length; wordIndex++) {
+                act(function () {
+                    jest.advanceTimersByTime(SPEED);
+                });
+            }
+        }
+        lastText = texts[texts.length - 1];
+        spanElement = screen.getByText(lastText);
+        expect(spanElement).toBeInTheDocument();
+        return [2 /*return*/];
     });
-    var linkElement = screen.getByText(texts[texts.length - 1]);
-    expect(linkElement).toBeInTheDocument();
-});
+}); });
