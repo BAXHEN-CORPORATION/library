@@ -20,3 +20,19 @@ test("if it render the letters of the texts in order according each speed time",
     }
   }
 });
+
+test("if it types each only once by default and display the last one in the end", () => {
+  jest.useFakeTimers();
+  render(<Typing texts={texts} speed={SPEED} />);
+
+  const timeToFinishDisplay = texts.reduce((acc, text) => {
+    return acc + text.length;
+  }, 1);
+
+  act(() => {
+    jest.advanceTimersByTime(SPEED * timeToFinishDisplay);
+  });
+
+  const linkElement = screen.getByText(texts[texts.length - 1]);
+  expect(linkElement).toBeInTheDocument();
+});
