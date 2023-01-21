@@ -1,3 +1,2 @@
-export declare const Faq: () => JSX.Element;
-export default Faq;
+export { default } from "./Typing";
 //# sourceMappingURL=index.d.ts.map
