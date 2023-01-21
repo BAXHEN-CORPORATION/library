@@ -1,0 +1,31 @@
+import { Template } from "@pdfme/generator";
+export declare const template: Template;
+export declare const inputs: {
+    drawee: string;
+    assignor: string;
+    product: string;
+    fund: string;
+    date: string;
+    contractCode: string;
+    requestedValue: string;
+    costs: string;
+    grossValue: string;
+    installments: string;
+    yearRate: string;
+    monthRate: string;
+    float: string;
+    ratePeriod: string;
+    indexer: string;
+    percentageIndexer: string;
+    indexerValue: string;
+    indexerPeriod: string;
+    calculationType: string;
+    shortage: string;
+    operationShortage: string;
+    unitPrice: string;
+    acquisitionQuantity: string;
+    interests: string;
+    fine: string;
+    iof: string;
+}[];
+//# sourceMappingURL=multiplica.d.ts.map
