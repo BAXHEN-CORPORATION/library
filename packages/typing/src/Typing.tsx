@@ -1,39 +1,13 @@
 import React from "react";
 
-import { styled } from "@mui/material";
+import Typography from "@mui/material/Typography";
+
+import { Span } from "./Typing.styles";
 
 export interface TypingProps {
   texts: string[];
   speed?: number;
 }
-
-const Span = styled("span")({
-  "@keyframes myEffect": {
-    "100%": {
-      left: "100%",
-      margin: "0 -1ch 0 1ch",
-    },
-  },
-
-  "&::after": {
-    content: "''",
-    position: "absolute",
-    height: "100%",
-    width: "100%",
-    borderLeft: "2px solid",
-    backgroundColor: "white",
-    // animation: "myEffect 5s steps(8) infinite",
-  },
-});
-
-const ListItem = styled("li")({
-  listStyle: "none",
-  position: "relative",
-});
-const List = styled("ul")({
-  display: "inline-flex",
-  marginLeft: "15px",
-});
 
 const Typing: React.FC<TypingProps> = ({ texts, speed = 1000 }) => {
   const [index, setIndex] = React.useState(0);
@@ -68,11 +42,9 @@ const Typing: React.FC<TypingProps> = ({ texts, speed = 1000 }) => {
   }, [index, wordIndex, text]);
 
   return (
-    <List>
-      <ListItem>
-        <Span>{displayText}</Span>
-      </ListItem>
-    </List>
+    <Typography sx={{ display: "inline-flex", position: "relative" }}>
+      <Span>{displayText}</Span>
+    </Typography>
   );
 };
 

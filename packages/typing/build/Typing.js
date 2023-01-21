@@ -1,30 +1,6 @@
 import React from "react";
-import { styled } from "@mui/material";
-var Span = styled("span")({
-    "@keyframes myEffect": {
-        "100%": {
-            left: "100%",
-            margin: "0 -1ch 0 1ch",
-        },
-    },
-    "&::after": {
-        content: "''",
-        position: "absolute",
-        height: "100%",
-        width: "100%",
-        borderLeft: "2px solid",
-        backgroundColor: "white",
-        // animation: "myEffect 5s steps(8) infinite",
-    },
-});
-var ListItem = styled("li")({
-    listStyle: "none",
-    position: "relative",
-});
-var List = styled("ul")({
-    display: "inline-flex",
-    marginLeft: "15px",
-});
+import Typography from "@mui/material/Typography";
+import { Span } from "./Typing.styles";
 var Typing = function (_a) {
     var texts = _a.texts, _b = _a.speed, speed = _b === void 0 ? 1000 : _b;
     var _c = React.useState(0), index = _c[0], setIndex = _c[1];
@@ -48,8 +24,7 @@ var Typing = function (_a) {
             setIndex(0);
         }, speed);
     }, [index, wordIndex, text]);
-    return (React.createElement(List, null,
-        React.createElement(ListItem, null,
-            React.createElement(Span, null, displayText))));
+    return (React.createElement(Typography, { sx: { display: "inline-flex", position: "relative" } },
+        React.createElement(Span, null, displayText)));
 };
 export default Typing;
