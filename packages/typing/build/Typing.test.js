@@ -74,3 +74,24 @@ test("if it types each only once by default and display the last one in the end"
         return [2 /*return*/];
     });
 }); });
+test("if it types texts on loop when infinite props is passed", function () { return __awaiter(void 0, void 0, void 0, function () {
+    var index, wordIndex, lastText, spanElement;
+    return __generator(this, function (_a) {
+        jest.useFakeTimers();
+        render(React.createElement(Typing, { texts: texts, speed: SPEED, infinite: true }));
+        for (index = 0; index < texts.length; index++) {
+            for (wordIndex = 1; wordIndex <= texts[index].length; wordIndex++) {
+                act(function () {
+                    jest.advanceTimersByTime(SPEED);
+                });
+            }
+        }
+        act(function () {
+            jest.advanceTimersByTime(SPEED);
+        });
+        lastText = texts[texts.length - 1];
+        spanElement = screen.getByText(lastText);
+        expect(spanElement).not.toBeInTheDocument();
+        return [2 /*return*/];
+    });
+}); });
