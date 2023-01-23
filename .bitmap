@@ -1,0 +1,16 @@
+{
+  "typing": {
+    "scope": "",
+    "version": "",
+    "defaultScope": "baxhen.pub",
+    "mainFile": "index.ts",
+    "rootDir": "packages/typing/src",
+    "config": {
+      "teambit.react/react": {},
+      "teambit.envs/envs": {
+        "env": "teambit.react/react"
+      }
+    }
+  },
+  "$schema-version": "15.0.0"
+}

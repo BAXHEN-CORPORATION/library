@@ -4,7 +4,7 @@ import { TypingProps } from "./types";
 export const useTyping = ({
   texts,
   infinite = false,
-  speed = 1000,
+  speed = 500,
   color = "primary",
 }: TypingProps) => {
   const [index, setIndex] = React.useState(0);
@@ -21,15 +21,23 @@ export const useTyping = ({
       const maxWordIndex = text.length;
 
       if (wordIndex < maxWordIndex) {
-        setWordIndex((old) => old + 1);
+        setWordIndex((old) => {
+          if (old < maxWordIndex) return old + 1;
+
+          return old;
+        });
 
         return;
       }
 
       if (index < maxIndex) {
-        setIndex((old) => old + 1);
-
         setWordIndex(1);
+        setIndex((old) => {
+          if (old < maxIndex) return old + 1;
+
+          return old;
+        });
+
         return;
       }
 

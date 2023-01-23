@@ -25,7 +25,7 @@ const TypingRoot = styled(Typography)({
   position: "relative",
 });
 
-const Typing: React.FC<TypingProps> = (props) => {
+export const Typing: React.FC<TypingProps> = (props) => {
   const { text, color } = useTyping(props);
 
   return (
